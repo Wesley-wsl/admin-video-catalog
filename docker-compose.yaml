@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    container_name: admin-video-catalog-app
+    volumes:
+      - .:/home/node/app
