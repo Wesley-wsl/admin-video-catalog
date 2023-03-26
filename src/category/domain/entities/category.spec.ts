@@ -1,4 +1,5 @@
-import { Category, ICategoryProperties } from "./category";
+import { Category } from "./category";
+import { ICategoryProperties } from "./category.interface";
 
 const props: ICategoryProperties = {
   name: "Movie",
@@ -52,5 +53,43 @@ describe("Category Unit Tests", () => {
     expect(category.description).toEqual(null);
     expect(category.isActive).toEqual(true);
     expect(category.created_at).toBeInstanceOf(Date);
+  });
+
+  it("should update name and description of category", () => {
+    const arrange = {
+      name: "name",
+      description: "description",
+      is_active: true,
+    };
+    const category = new Category(arrange);
+
+    expect(category.name).toEqual(arrange.name);
+    expect(category.description).toEqual(arrange.description);
+
+    const newProperties = {
+      name: "name2",
+      description: "description2",
+    };
+
+    category.update(newProperties);
+
+    expect(category.name).toEqual(newProperties.name);
+    expect(category.description).toEqual(newProperties.description);
+  });
+
+  it("should activate and deactivate category", () => {
+    const arrange = {
+      name: "name",
+      description: "description",
+      is_active: true,
+    };
+    const category = new Category(arrange);
+    expect(category.isActive).toEqual(true);
+
+    category.deactivate();
+    expect(category.isActive).toEqual(false);
+
+    category.activate();
+    expect(category.isActive).toEqual(true);
   });
 });
