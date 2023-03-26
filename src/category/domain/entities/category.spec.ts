@@ -1,9 +1,6 @@
 import { Category, ICategoryProperties } from "./category";
-import { validate as uuidValidate } from "uuid";
-import UniqueEntityId from "../../../@seedwork/domain/unique-entity-id.vo";
 
 const props: ICategoryProperties = {
-  id: new UniqueEntityId(),
   name: "Movie",
   description: "Description",
   is_active: true,
