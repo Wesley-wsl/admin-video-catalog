@@ -1,4 +1,4 @@
-import InvalidUuidError from "../errors/invalid-uuid.error";
+import InvalidUuidError from "../../../errors/invalid-uuid.error";
 import UniqueEntityId from "./unique-entity-id.vo";
 import { validate as uuidValidate } from "uuid";
 
@@ -13,13 +13,13 @@ describe("UniqueEntityId test", () => {
   it("should accept a uuid passed in constructor", async () => {
     const uuid = "ac610bb3-3c0d-4a27-b799-a3f44c67f786";
     const uniqueEntityId = new UniqueEntityId(uuid);
-    expect(uniqueEntityId.id).toEqual(uuid);
+    expect(uniqueEntityId.value).toEqual(uuid);
     expect(validateSpy).toHaveBeenCalledTimes(1);
   });
 
   it("should auto generate a uuid valid", async () => {
     const uniqueEntityId = new UniqueEntityId();
-    expect(uuidValidate(uniqueEntityId.id)).toBeTruthy();
+    expect(uuidValidate(uniqueEntityId.value)).toBeTruthy();
     expect(validateSpy).toHaveBeenCalledTimes(1);
   });
 });
