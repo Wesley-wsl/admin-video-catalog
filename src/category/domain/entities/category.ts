@@ -1,12 +1,6 @@
 import Entity from "../../../@seedwork/domain/entity/entity";
 import UniqueEntityId from "../../../@seedwork/domain/value-objects/unique-entity-id/unique-entity-id.vo";
-
-export interface ICategoryProperties {
-  name: string;
-  description?: string;
-  is_active?: boolean;
-  created_at?: Date;
-}
+import { ICategoryProperties, ICategoryUpdate } from "./category.interface";
 
 export class Category extends Entity<ICategoryProperties> {
   constructor(public readonly props: ICategoryProperties, id?: UniqueEntityId) {
@@ -34,5 +28,18 @@ export class Category extends Entity<ICategoryProperties> {
 
   get allProps() {
     return this.props;
+  }
+
+  update({ name, description }: ICategoryUpdate) {
+    this.props.name = name;
+    this.props.description = description;
+  }
+
+  activate() {
+    this.props.is_active = true;
+  }
+
+  deactivate() {
+    this.props.is_active = false;
   }
 }
