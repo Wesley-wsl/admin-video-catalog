@@ -9,8 +9,10 @@ const props: ICategoryProperties = {
 };
 
 describe("Category Unit Tests", () => {
+  const validateMethod = (Category.validate = jest.fn());
   it("Should create a category with all properties", () => {
     const category = new Category(props);
+    expect(validateMethod).toHaveBeenCalledTimes(1);
     expect(category.allProps).toStrictEqual(props);
   });
 
@@ -19,7 +21,7 @@ describe("Category Unit Tests", () => {
       name: props.name,
       description: props.description,
     });
-
+    expect(validateMethod).toHaveBeenCalledTimes(1);
     expect(category.name).toEqual(props.name);
     expect(category.description).toEqual(props.description);
   });
@@ -29,7 +31,7 @@ describe("Category Unit Tests", () => {
       name: props.name,
       is_active: props.is_active,
     });
-
+    expect(validateMethod).toHaveBeenCalledTimes(1);
     expect(category.name).toEqual(props.name);
     expect(category.isActive).toEqual(props.is_active);
   });
@@ -39,7 +41,7 @@ describe("Category Unit Tests", () => {
       name: props.name,
       created_at: props.created_at,
     });
-
+    expect(validateMethod).toHaveBeenCalledTimes(1);
     expect(category.name).toEqual(props.name);
     expect(category.created_at).toEqual(props.created_at);
   });
@@ -48,7 +50,7 @@ describe("Category Unit Tests", () => {
     const category = new Category({
       name: props.name,
     });
-
+    expect(validateMethod).toHaveBeenCalledTimes(1);
     expect(category.name).toEqual(props.name);
     expect(category.description).toEqual(null);
     expect(category.isActive).toEqual(true);
@@ -62,7 +64,6 @@ describe("Category Unit Tests", () => {
       is_active: true,
     };
     const category = new Category(arrange);
-
     expect(category.name).toEqual(arrange.name);
     expect(category.description).toEqual(arrange.description);
 
@@ -72,7 +73,7 @@ describe("Category Unit Tests", () => {
     };
 
     category.update(newProperties);
-
+    expect(validateMethod).toHaveBeenCalledTimes(2);
     expect(category.name).toEqual(newProperties.name);
     expect(category.description).toEqual(newProperties.description);
   });
@@ -84,6 +85,7 @@ describe("Category Unit Tests", () => {
       is_active: true,
     };
     const category = new Category(arrange);
+    expect(validateMethod).toHaveBeenCalledTimes(1);
     expect(category.isActive).toEqual(true);
 
     category.deactivate();

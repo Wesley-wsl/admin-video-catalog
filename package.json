@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "ts-node": "ts-node",
-    "test": "jest"
+    "test": "jest",
+    "test:integration": "jest int.spec"
   },
   "devDependencies": {
     "@swc/core": "^1.3.37",
@@ -20,6 +21,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "class-validator": "^0.14.0",
     "uuid": "^9.0.0"
   }
 }
