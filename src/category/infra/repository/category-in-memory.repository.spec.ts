@@ -40,8 +40,8 @@ describe("CategoryInMemoryRepository Unit Tests", () => {
 
   describe("applySort", () => {
     const items = [
-      new Category({ name: "random" }),
-      new Category({ name: "test" }),
+      new Category({ name: "random", created_at: new Date("2024-02-02") }),
+      new Category({ name: "test", created_at: new Date("2022-02-02") }),
     ];
     it("should be able to sort category correctly", async () => {
       let itemsOrdered = await categoryInMemoryRepository["applySort"](
@@ -53,14 +53,14 @@ describe("CategoryInMemoryRepository Unit Tests", () => {
       expect(itemsOrdered).toStrictEqual([items[1], items[0]]);
     });
 
-    it("shouldn't be able to sort category if don't pass sort parameter", async () => {
+    it("shouldn't be able to sort category by created_at when not pass sort parameter.", async () => {
       let itemsOrdered = await categoryInMemoryRepository["applySort"](
         items,
         null,
         null
       );
 
-      expect(itemsOrdered).toStrictEqual(items);
+      expect(itemsOrdered).toStrictEqual([items[1], items[0]]);
     });
   });
 });

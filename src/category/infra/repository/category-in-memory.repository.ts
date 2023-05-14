@@ -26,7 +26,7 @@ export class CategoryInMemoryRepository
     sort_dir: SortDirection
   ): Promise<Category[]> {
     return !sort
-      ? super.applySort(items, "created_at", sort_dir)
+      ? super.applySort(items, "created_at", "asc")
       : super.applySort(items, sort, sort_dir);
   }
 }
