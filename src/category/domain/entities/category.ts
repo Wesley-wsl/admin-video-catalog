@@ -1,4 +1,4 @@
-import Entity from "../../../@seedwork/domain/entity/entity";
+import Entity from "#seedwork/domain/entity/entity";
 import UniqueEntityId from "../../../@seedwork/domain/value-objects/unique-entity-id/unique-entity-id.vo";
 import { ICategoryProperties, ICategoryUpdate } from "./category.interface";
 import CategoryValidatorFactory from "../validators/category.validator";
