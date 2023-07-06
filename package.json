@@ -12,6 +12,7 @@
   "scripts": {
     "prestart:dev": "npm run build -w @core/admin-video-catalog",
     "test:@core": "npm run test -w @core/admin-video-catalog",
+    "test:nestjs": "npm run test -w nestjs",
     "start:dev": "npm run build:w -w @core/admin-video-catalog & npm run start:dev -w nestjs",
     "test": "jest"
   }
