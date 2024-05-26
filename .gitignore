@@ -3,3 +3,5 @@ dist
 .history/
 tscondig.tsbuildinfo
 coverage
+.env.test
+.env

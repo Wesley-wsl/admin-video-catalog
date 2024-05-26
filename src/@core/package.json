@@ -6,7 +6,9 @@
   "author": "Wesley-wsl <wesleywestelley@gmail.com>",
   "license": "MIT",
   "imports": {
+    "#seedwork/domain": "./dist/@seedwork/domain/index.js",
     "#seedwork/*": "./dist/@seedwork/*.js",
+    "#category/domain": "./dist/category/domain/index.js",
     "#category/*": "./dist/category/*.js"
   },
   "exports": {
@@ -41,7 +43,7 @@
     "test": "jest",
     "test:integration": "jest int.spec",
     "cti": "cti",
-    "cti:@core": "sh ./cti.sh",
+    "cti:make": "sh ./cti.sh",
     "build": "tsc -b ./tsconfig.json",
     "build:w": "tsc -b ./tsconfig.json -w"
   },
@@ -60,6 +62,7 @@
   "dependencies": {
     "chance": "^1.1.11",
     "class-validator": "^0.14.0",
+    "dotenv": "^16.3.1",
     "sequelize": "^6.32.0",
     "sequelize-typescript": "^2.1.5",
     "sqlite3": "^5.1.6",
